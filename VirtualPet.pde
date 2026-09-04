@@ -1,15 +1,6 @@
-import processing.serial.*;
-import cc.arduino.*;
-Arduino arduino;
-
 void setup(){
   background(0, 0, 0);
   size(400, 400);
-  arduino = new Arduino(this, Arduino.list()[2], 57600);
-}
-
-public static int enlarge(int y, int initial, double r){
-  return (int)(initial + (r * y));
 }
 void draw(){
   //main
@@ -30,15 +21,13 @@ void draw(){
   
   //nose
   fill(color(255, 51,  51));
-  int y = arduino.analogRead(5);
-  ellipse(200, 150, enlarge(y, 50, .5), enlarge(y, 50, .5));
+  ellipse(200, 150, 50, 50);
   
   fill(color(255, 255, 255));
-  ellipse(195 - .05 * enlarge(y, 50, .025), 145 - .05 * enlarge(y, 50, .025), enlarge(y, 20, .5), 
-  enlarge(y, 20, .5));
+  ellipse(195, 145, 20, 20);
   
   //facial features
-  line(200, 175 + (Math.abs(20 - enlarge(y, 20, .5)))/2, 200, 275);
+  line(200, 175, 200, 275);
   noFill();
   arc(200, 175, 200, 200, PI/6, (5*PI)/6);
   
